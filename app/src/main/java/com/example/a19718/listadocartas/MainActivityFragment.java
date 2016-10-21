@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -67,6 +68,8 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void refresh(){
-
+        CardsApi api = new CardsApi();
+        String result = api.getCards();
+        Log.d("DEBUG", result);
     }
 }
