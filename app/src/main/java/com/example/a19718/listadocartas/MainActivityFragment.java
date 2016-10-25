@@ -1,5 +1,6 @@
 package com.example.a19718.listadocartas;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -102,8 +103,19 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void refresh(){
-        CardsApi api = new CardsApi();
-        String result = api.getCards();
-        Log.d("DEBUG", result);
+        RefreshDataTask task = new RefreshDataTask();
+        task.execute();
+    }
+
+    private class RefreshDataTask extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            CardsApi api = new CardsApi();
+            String result = api.getCards();
+
+            Log.d("DEBUG", result);
+            return null;
+        }
     }
 }
