@@ -9,7 +9,7 @@ import android.net.Uri;
 import java.io.IOException;
 
 public class CardsApi {
-    private final String BASE_URL = "https://docs.magicthegathering.io/v1/cards";
+    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards/";
 
     String getCards() {
         Uri builtUri = Uri.parse(BASE_URL)
