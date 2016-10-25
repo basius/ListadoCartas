@@ -14,12 +14,13 @@ import android.widget.ListView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    private ArrayList<String> data;
+    private ArrayList<String> items;
     private ArrayAdapter<String> adapter;
 
     public MainActivityFragment() {
@@ -32,15 +33,48 @@ public class MainActivityFragment extends Fragment {
 
         ListView lvCartas = (ListView) view.findViewById(R.id.lvCartas);
 
-        data = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(
+        String[] data = {
+                "Los 400 golpes",
+                "El odio",
+                "El padrino",
+                "El padrino. Parte II",
+                "Ocurrió cerca de su casa",
+                "Infiltrados",
+                "Umberto D.",
+                "El odio",
+                "El padrino",
+                "El padrino. Parte II",
+                "Ocurrió cerca de su casa",
+                "Infiltrados",
+                "Umberto D.",
+                "El odio",
+                "El padrino",
+                "El padrino. Parte II",
+                "Ocurrió cerca de su casa",
+                "Infiltrados",
+                "Umberto D.",
+                "El odio",
+                "El padrino",
+                "El padrino. Parte II",
+                "Ocurrió cerca de su casa",
+                "Infiltrados",
+                "Umberto D.",
+                "El odio",
+                "El padrino",
+                "El padrino. Parte II",
+                "Ocurrió cerca de su casa",
+                "Infiltrados",
+                "Umberto D."
+        };
+
+        items = new ArrayList<>(Arrays.asList(data));
+        adapter = new ArrayAdapter<>(
                 getContext(),
                 R.layout.layout_carta,
                 R.id.tvCarta,
-                data
+                items
         );
         lvCartas.setAdapter(adapter);
-
         return view;
     }
 
