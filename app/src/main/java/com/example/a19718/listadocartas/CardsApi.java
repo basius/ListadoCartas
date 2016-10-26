@@ -5,6 +5,7 @@ package com.example.a19718.listadocartas;
  */
 
 import android.net.Uri;
+import android.support.annotation.Nullable;
 
 import java.io.IOException;
 
@@ -17,6 +18,17 @@ public class CardsApi {
                 .build();
         String url = builtUri.toString();
 
+        try {
+            String JsonResponse = HttpUtils.get(url);
+            return JsonResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return doCall(url);
+    }
+
+    @Nullable
+    private String doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             return JsonResponse;
