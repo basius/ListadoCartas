@@ -83,15 +83,16 @@ public class MainActivityFragment extends Fragment {
         task.execute();
     }
 
-    private class RefreshDataTask extends AsyncTask<Void,Void,Void>{
+    private class RefreshDataTask extends AsyncTask<Void,Void,ArrayList<Card>>{
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected ArrayList<Card> doInBackground(Void... params) {
             CardsApi api = new CardsApi();
-            String result = api.getCards();
+            ArrayList<Card> result;
+            result = api.getCards();
 
-            Log.d("DEBUG", result);
-            return null;
+            Log.d("DEBUG", result.toString());
+            return result;
         }
     }
 }

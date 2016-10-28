@@ -4,37 +4,61 @@ package com.example.a19718.listadocartas;
  * Created by 19718 on 21/10/16.
  */
 
+import android.graphics.Movie;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CardsApi {
-    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards/";
+    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
-    String getCards() {
+    ArrayList<Card> getCards() {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
         String url = builtUri.toString();
 
-        try {
-            String JsonResponse = HttpUtils.get(url);
-            return JsonResponse;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return doCall(url);
     }
 
     @Nullable
-    private String doCall(String url) {
+    private ArrayList<Card> doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
-            return JsonResponse;
+            return processJson(JsonResponse);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private ArrayList<Card> processJson(String jsonResponse) {
+        ArrayList<Card> cards = new ArrayList<>();
+        try {
+            JSONObject data = new JSONObject(jsonResponse);
+            JSONArray jsonCards = data.getJSONArray("cards");
+            for (int i = 0; i < jsonCards.length(); i++) {
+                JSONObject jsonCard = jsonCards.getJSONObject(i);
+
+                Card card = new Card();
+                card.setName(jsonCard.getString("name"));
+                card.setRarity(jsonCard.getString("rarity"));
+                //si la carta no te text no adjuntem res
+                card.setText("ok");
+                card.setType(jsonCard.getString("type"));
+                card.setUrlImage(jsonCard.getString("imageUrl"));
+
+                cards.add(card);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return cards;
     }
 }

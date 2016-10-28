@@ -15,6 +15,9 @@ public class Card {
     private String urlImage;
     private ArrayList<String> cards;
 
+    public Card() {
+    }
+
     public String getName() {
 
         return name;
