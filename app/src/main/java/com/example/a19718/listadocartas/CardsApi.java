@@ -49,8 +49,13 @@ public class CardsApi {
                 Card card = new Card();
                 card.setName(jsonCard.getString("name"));
                 card.setRarity(jsonCard.getString("rarity"));
-                //si la carta no te text no adjuntem res
-                card.setText("ok");
+                //Si contiene texto
+                if(!jsonCard.isNull(("text"))) {
+                    card.setText(jsonCard.getString("text"));
+                //Si no contiene texto
+                }else{
+                    card.setText("NO_TEXT");
+                }
                 card.setType(jsonCard.getString("type"));
                 card.setUrlImage(jsonCard.getString("imageUrl"));
 
