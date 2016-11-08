@@ -48,7 +48,7 @@ public class CardsApi {
 
                 Card card = new Card();
                 card.setName(jsonCard.getString("name"));
-                card.setRarity(jsonCard.getString("rarity"));
+                card.setRarity(jsonCard.getString("rarity")); //Hi han cartes que no tenen raresa
                 //Si contiene texto
                 if(!jsonCard.isNull(("text"))) {
                     card.setText(jsonCard.getString("text"));

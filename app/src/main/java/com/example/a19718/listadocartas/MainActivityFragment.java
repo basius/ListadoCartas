@@ -15,14 +15,13 @@ import android.widget.ListView;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
     private ArrayList<String> items;
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<Card> adapter;
 
     public MainActivityFragment() {
     }
@@ -44,10 +43,10 @@ public class MainActivityFragment extends Fragment {
                 "Umberto D."
         };
 
-        items = new ArrayList<>(Arrays.asList(data));
+        items = new ArrayList<>();
         adapter = new ArrayAdapter<>(
                 getContext(),
-                R.layout.layout_carta,
+                R.layout.lv_carta_row,
                 R.id.tvCarta,
                 items
         );
@@ -94,5 +93,16 @@ public class MainActivityFragment extends Fragment {
             Log.d("DEBUG", result.toString());
             return result;
         }
+
+        @Override
+        protected void onPostExecute(ArrayList<Card> cards) {
+            adapter.clear();
+            for (Card card : cards) {
+                adapter.add(card);
+            }
+        }
     }
+
+
+
 }
