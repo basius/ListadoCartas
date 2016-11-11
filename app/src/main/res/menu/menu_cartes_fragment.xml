@@ -4,5 +4,6 @@
 
     <item android:title="Refresh"
         app:showAsAction="never"
-        android:id="@+id/refreshCards" />
+        android:id="@+id/refreshCards"
+        android:orderInCategory="100" />
 </menu>

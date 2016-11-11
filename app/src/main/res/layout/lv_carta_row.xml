@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/tvCarta"
+        android:gravity="center_vertical"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+        android:text="New Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvCarta"
-        tools:layout_conversion_absoluteX="0dp"
-        tools:layout_conversion_absoluteY="0dp"
-        tools:layout_conversion_absoluteWidth="384dp"
-        tools:layout_conversion_absoluteHeight="16dp" />
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="8dp"/>
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

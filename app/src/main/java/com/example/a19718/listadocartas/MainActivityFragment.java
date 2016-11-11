@@ -15,12 +15,13 @@ import android.widget.ListView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    private ArrayList<String> items;
+    private ArrayList<Card> items;
     private ArrayAdapter<Card> adapter;
 
     public MainActivityFragment() {
@@ -87,8 +88,7 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected ArrayList<Card> doInBackground(Void... params) {
             CardsApi api = new CardsApi();
-            ArrayList<Card> result;
-            result = api.getCards();
+            ArrayList<Card> result = api.getCards();
 
             Log.d("DEBUG", result.toString());
             return result;
