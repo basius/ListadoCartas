@@ -111,6 +111,9 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        refresh();
+    }
 }
