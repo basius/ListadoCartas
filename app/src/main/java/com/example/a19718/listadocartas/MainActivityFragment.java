@@ -1,5 +1,6 @@
 package com.example.a19718.listadocartas;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.util.Log;
-
+import android.content.Intent;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -73,6 +74,11 @@ public class MainActivityFragment extends Fragment {
 
         if (id == R.id.refreshCards) {
             refresh();
+            return true;
+        }
+        if (id == R.id.action_settings) {
+            Intent i = new Intent(this.getContext(), SettingsActivity.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
