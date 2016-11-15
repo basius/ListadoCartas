@@ -1,8 +1,10 @@
 package com.example.a19718.listadocartas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -93,10 +95,10 @@ public class MainActivityFragment extends Fragment {
 
         @Override
         protected ArrayList<Card> doInBackground(Void... params) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             CardsApi api = new CardsApi();
             ArrayList<Card> result = api.getCards();
-
-            Log.d("DEBUG", result.toString());
+            Log.d("DEBUG", result != null ? result.toString() : null);
             return result;
         }
 
