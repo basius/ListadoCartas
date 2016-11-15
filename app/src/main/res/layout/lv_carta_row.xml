@@ -7,12 +7,14 @@
 
     <TextView
         android:id="@+id/tvCarta"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:text="New Text"
+        android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp" />
 
 </android.support.constraint.ConstraintLayout>

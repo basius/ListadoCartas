@@ -15,7 +15,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CardsApi {
+class CardsApi {
     private final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
     ArrayList<Card> getCards() {
