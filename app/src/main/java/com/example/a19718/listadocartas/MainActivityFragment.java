@@ -13,12 +13,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.util.Log;
-import android.content.Intent;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -78,7 +75,8 @@ public class MainActivityFragment extends Fragment {
             return true;
         }
         if (id == R.id.action_settings) {
-            Intent i = new Intent(this.getContext(), SettingsActivity.class);
+            Log.d("DEBUG", "ok-------------------------");
+            Intent i = new Intent(this.getContext(),SettingsActivity.class);
             startActivity(i);
             return true;
         }
@@ -94,7 +92,14 @@ public class MainActivityFragment extends Fragment {
 
         @Override
         protected ArrayList<Card> doInBackground(Void... params) {
+            //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            String common = preferences.getString("pais", "es");
+            /*String uncommon = preferences.getString("tipus_consulta", "vistes");
+            String rare = preferences.getString("tipus_consulta", "vistes");
+            String special = preferences.getString("tipus_consulta", "vistes");
+            String basicLand = preferences.getString("tipus_consulta", "vistes");
+            String color = preferences.getString("tipus_consulta", "vistes");*/
             CardsApi api = new CardsApi();
             ArrayList<Card> result = api.getCards();
             Log.d("DEBUG", result != null ? result.toString() : null);
