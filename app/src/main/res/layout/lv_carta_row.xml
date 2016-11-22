@@ -10,29 +10,30 @@
         android:text="TextView"
         android:layout_width="0dp"
         android:layout_height="25dp"
-        android:id="@+id/tvCarta"
+        android:id="@+id/tvType"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@+id/imageButton2"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.04"
+        tools:layout_editor_absoluteY="152dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/textView9"
+        android:id="@+id/tvName"
         android:layout_marginEnd="16dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@+id/imageButton2"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintHorizontal_bias="0.58"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:layout_width="152dp"

@@ -25,7 +25,7 @@ import java.util.Arrays;
  */
 public class MainActivityFragment extends Fragment {
     private ArrayList<Card> items;
-    private ArrayAdapter<Card> adapter;
+    private CardAdapter adapter;
 
     public MainActivityFragment() {
     }
@@ -48,10 +48,9 @@ public class MainActivityFragment extends Fragment {
         };
 
         items = new ArrayList<>();
-        adapter = new ArrayAdapter<>(
+        adapter = new CardAdapter(
                 getContext(),
                 R.layout.lv_carta_row,
-                R.id.tvCarta,
                 items
         );
         lvCartas.setAdapter(adapter);
