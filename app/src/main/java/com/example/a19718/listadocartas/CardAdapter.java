@@ -1,6 +1,7 @@
 package com.example.a19718.listadocartas;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,7 +42,7 @@ public class CardAdapter extends ArrayAdapter<Card>{
         // Unim el codi en les Views del Layout
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
         TextView tvType = (TextView) convertView.findViewById(R.id.tvType);
-        ImageView ibImage = (ImageView) convertView.findViewById(R.id.imageButton2);
+        ImageView ibImage = (ImageView) convertView.findViewById(R.id.ibPicture);
 
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         tvName.setText(card.getName());
