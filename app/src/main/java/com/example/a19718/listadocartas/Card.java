@@ -1,12 +1,13 @@
 package com.example.a19718.listadocartas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by 19718 on 21/10/16.
  */
 
-public class Card {
+public class Card implements Serializable {
 
     private String name;
     private String rarity;

@@ -1,8 +1,7 @@
 package com.example.a19718.listadocartas;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.annotation.NonNull;
+import com.bumptech.glide.Glide;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,6 @@ public class CardAdapter extends ArrayAdapter<Card>{
         super(context, resource, resource, objects);
     }
 
-    @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -47,7 +45,8 @@ public class CardAdapter extends ArrayAdapter<Card>{
         // Fiquem les dades dels objectes (provinents del JSON) en el layout
         tvName.setText(card.getName());
         tvType.setText(card.getType());
-
+        //Amb glide caarreguem la imatge al ImageButton corresponent
+        Glide.with(getContext()).load(card.getUrlImage()).into(ibImage);
         // Retornem la View replena per a mostrarla
         return convertView;
     }
