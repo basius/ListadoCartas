@@ -17,21 +17,37 @@
     <string name="pref_default_display_name">John Smith</string>
 
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
+    <string-array name="colors">
+        <item>All</item>
+        <item>Blue</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Black</item>
+    </string-array>
+
+    <string-array name="pref_example_color_values">
+        <item>All</item>
+        <item>Blue</item>
+        <item>White</item>
+        <item>Red</item>
+        <item>Black</item>
+    </string-array>
+
+    <string-array name="raritys">
+        <item>Uncommon</item>
         <item>Common</item>
-        <item>When possible</item>
-        <item>Never</item>
+        <item>Rare</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
     </string-array>
-
-    <string-array name="pref_opcions_consulta_list_titles">
-        <item>Mes vistes</item>
-        <item>Próximes estrenes</item>
-    </string-array>
-
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
+    <string-array name="pref_example_raritys_values">
+        <item>Uncommon</item>
+        <item>Common</item>
+        <item>Rare</item>
+        <item>Mythic Rare</item>
+        <item>Special</item>
+        <item>Basic Land</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->

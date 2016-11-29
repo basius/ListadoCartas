@@ -1,27 +1,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="common"
-        android:inputType="textCapWords"
-        android:key="rarity"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="Rarity" />
-
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="-1"
-        android:entries="@array/pref_example_list_titles"
-        android:entryValues="@array/pref_example_list_values"
-        android:key="tipus_consulta"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="Tipus consulta" />
+        android:defaultValue="All"
+        android:entries="@array/colors"
+        android:entryValues="@array/pref_example_color_values"
+        android:key="color"
+        android:title="Color" />
 
+    <ListPreference
+        android:defaultValue="Common"
+        android:entries="@array/raritys"
+        android:entryValues="@array/pref_example_raritys_values"
+        android:key="raritys"
+        android:title="Rarity" />
 </PreferenceScreen>

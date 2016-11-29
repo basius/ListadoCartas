@@ -56,6 +56,13 @@ class CardsApi {
                 }else{
                     card.setText("NO_TEXT");
                 }
+                //Si no contiene color
+                if(!jsonCard.isNull(("colors"))) {
+                    card.setColor(jsonCard.getString("colors"));
+                    //Si no contiene texto
+                }else{
+                    card.setColor("NO_COLOR");
+                }
                 card.setType(jsonCard.getString("type"));
                 card.setUrlImage(jsonCard.getString("imageUrl"));
 

@@ -13,6 +13,7 @@ public class Card implements Serializable {
     private String rarity;
     private String text;
     private String type;
+    private String color;
     private String urlImage;
     private ArrayList<String> cards;
 
@@ -68,6 +69,14 @@ public class Card implements Serializable {
         this.cards = cards;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
@@ -75,6 +84,7 @@ public class Card implements Serializable {
                 ", rarity='" + rarity + '\'' +
                 ", text='" + text + '\'' +
                 ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
                 ", urlImage='" + urlImage + '\'' +
                 ", cards=" + cards +
                 '}';

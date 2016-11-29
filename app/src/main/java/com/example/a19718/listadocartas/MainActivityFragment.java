@@ -88,12 +88,8 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String common = preferences.getString("tipus_consulta", "common");
-            /*String uncommon = preferences.getString("tipus_consulta", "vistes");
-            String rare = preferences.getString("tipus_consulta", "vistes");
-            String special = preferences.getString("tipus_consulta", "vistes");
-            String basicLand = preferences.getString("tipus_consulta", "vistes");
-            String color = preferences.getString("tipus_consulta", "vistes");*/
+            String rarity = preferences.getString("raritys", "common");
+            String color = preferences.getString("color", "all");
             CardsApi api = new CardsApi();
             ArrayList<Card> result = api.getCards();
 
