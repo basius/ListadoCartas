@@ -74,12 +74,6 @@ public class MainActivityFragment extends Fragment {
             refresh();
             return true;
         }
-        if (id == R.id.action_settings) {
-            Log.d("DEBUG", "ok-------------------------");
-            Intent i = new Intent(this.getContext(),SettingsActivity.class);
-            startActivity(i);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -94,7 +88,7 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String common = preferences.getString("pais", "es");
+            String common = preferences.getString("tipus_consulta", "common");
             /*String uncommon = preferences.getString("tipus_consulta", "vistes");
             String rare = preferences.getString("tipus_consulta", "vistes");
             String special = preferences.getString("tipus_consulta", "vistes");
@@ -102,6 +96,7 @@ public class MainActivityFragment extends Fragment {
             String color = preferences.getString("tipus_consulta", "vistes");*/
             CardsApi api = new CardsApi();
             ArrayList<Card> result = api.getCards();
+
             Log.d("DEBUG", result != null ? result.toString() : null);
             return result;
         }
