@@ -12,8 +12,8 @@
 
     <ListPreference
         android:defaultValue="Common"
-        android:entries="@array/raritys"
-        android:entryValues="@array/pref_example_raritys_values"
-        android:key="raritys"
+        android:entries="@array/rarity"
+        android:entryValues="@array/pref_example_rarity_values"
+        android:key="rarity"
         android:title="Rarity" />
 </PreferenceScreen>

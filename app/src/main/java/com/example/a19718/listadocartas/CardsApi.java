@@ -27,6 +27,36 @@ class CardsApi {
         return doCall(url);
     }
 
+    ArrayList<Card> getColors(String color) {
+        Uri builtUri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("color",color)
+                .build();
+        String url = builtUri.toString();
+
+        return doCall(url);
+    }
+
+    ArrayList<Card> getRarity(String rarity) {
+        Uri builtUri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("rarity",rarity)
+                .build();
+        String url = builtUri.toString();
+
+        return doCall(url);
+    }
+
+    ArrayList<Card> getRarityAndColor(String rarity, String color) {
+        Uri builtUri = Uri.parse(BASE_URL)
+                .buildUpon()
+                .appendQueryParameter("rarity",rarity)
+                .appendQueryParameter("color",rarity)
+                .build();
+        String url = builtUri.toString();
+
+        return doCall(url);
+    }
     @Nullable
     private ArrayList<Card> doCall(String url) {
         try {
@@ -59,7 +89,6 @@ class CardsApi {
                 //Si no contiene color
                 if(!jsonCard.isNull(("colors"))) {
                     card.setColor(jsonCard.getString("colors"));
-                    //Si no contiene texto
                 }else{
                     card.setColor("NO_COLOR");
                 }
@@ -73,4 +102,5 @@ class CardsApi {
         }
         return cards;
     }
+
 }

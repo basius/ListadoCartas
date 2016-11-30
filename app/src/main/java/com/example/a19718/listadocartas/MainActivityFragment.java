@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.util.Log;
 import java.util.ArrayList;
@@ -33,17 +34,6 @@ public class MainActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         ListView lvCartas = (ListView) view.findViewById(R.id.lvCartas);
-
-        String[] data = {
-                "Los 400 golpes",
-                "El odio",
-                "El padrino",
-                "El padrino. Parte II",
-                "Ocurrió cerca de su casa",
-                "Infiltrados",
-                "Umberto D."
-        };
-
         items = new ArrayList<>();
         adapter = new CardAdapter(
                 getContext(),
@@ -51,6 +41,12 @@ public class MainActivityFragment extends Fragment {
                 items
         );
         lvCartas.setAdapter(adapter);
+        lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                       @Override
+                       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                    }
+                    });
+
         return view;
     }
 
@@ -88,14 +84,23 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String rarity = preferences.getString("raritys", "common");
-            String color = preferences.getString("color", "all");
+            String rarity = preferences.getString("rarity", "rarity");
+            String color = preferences.getString("color", "rarity");
             CardsApi api = new CardsApi();
-            ArrayList<Card> result = api.getCards();
-
-            Log.d("DEBUG", result != null ? result.toString() : null);
+            ArrayList<Card> result = new ArrayList<Card>();
+            //Basic Land no tenen color. Filtrem perque nomes retorni les que es demana un color especific
+            if((!(rarity.equals("Basic Land")))){
+                result = api.getRarityAndColor(rarity,color);
+            }else if (rarity.equals("Basic Land")){
+                result = api.getRarity(rarity);
+            }else {
+                result = api.getCards();
+            }
+            Log.d("DEBUG","++++++++++"+rarity+":"+color);
+            // Log.d("DEBUG", result != null ? result.toString() : null);
             return result;
         }
+
 
         @Override
         protected void onPostExecute(ArrayList<Card> cards) {
