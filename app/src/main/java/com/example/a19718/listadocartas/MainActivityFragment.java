@@ -45,6 +45,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Card movie = (Card) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(getContext(), DetailActivity.class);
             }
         });
 
