@@ -44,8 +44,9 @@ public class MainActivityFragment extends Fragment {
         lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Card movie = (Card) adapterView.getItemAtPosition(i);
+                Card card = (Card) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra("card",card);
             }
         });
 
