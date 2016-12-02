@@ -42,10 +42,10 @@ public class MainActivityFragment extends Fragment {
         );
         lvCartas.setAdapter(adapter);
         lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                       @Override
-                       public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    }
-                    });
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            }
+        });
 
         return view;
     }
