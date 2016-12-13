@@ -31,7 +31,7 @@ class CardsApi {
     ArrayList<Card> getColors(String color) {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
-                .appendQueryParameter("color",color)
+                .appendQueryParameter("colors",color)
                 .build();
         String url = builtUri.toString();
 
@@ -52,7 +52,7 @@ class CardsApi {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendQueryParameter("rarity",rarity)
-                .appendQueryParameter("color",rarity)
+                .appendQueryParameter("colors",color)
                 .build();
         String url = builtUri.toString();
 

@@ -11,7 +11,7 @@
         android:title="Color" />
 
     <ListPreference
-        android:defaultValue="Common"
+        android:defaultValue="All"
         android:entries="@array/rarity"
         android:entryValues="@array/pref_example_rarity_values"
         android:key="rarity"

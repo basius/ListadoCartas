@@ -92,20 +92,28 @@ public class MainActivityFragment extends Fragment {
         protected ArrayList<Card> doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            String rarity = preferences.getString("rarity", "rarity");
-            String color = preferences.getString("color", "rarity");
+            String rarity = preferences.getString("rarity", "All");
+            String color = preferences.getString("color", "All");
+
             CardsApi api = new CardsApi();
-            ArrayList<Card> result = new ArrayList<Card>();
-            //Basic Land no tenen color. Filtrem perque nomes retorni les que es demana un color especific
-            if((!(rarity.equals("Basic Land")))){
-                result = api.getRarityAndColor(rarity,color);
-            }else if (rarity.equals("Basic Land")){
+
+            ArrayList<Card> result = null;
+            if(!rarity.equals("All") && !color.equals("All")) {
+                //Basic Land no tenen color. Filtrem perque nomes retorni les que es demana un color especific
+                if ((!(rarity.equals("Basic Land")))) {
+                    result = api.getRarityAndColor(rarity, color);
+                } else {
+                    result = api.getRarity(rarity);
+                }
+            }else if (!rarity.equals("All")){
                 result = api.getRarity(rarity);
+            }else if (!color.equals("All")){
+                result = api.getColors(color);
             }else {
                 result = api.getCards();
             }
             Log.d("DEBUG","++++++++++"+rarity+":"+color);
-            // Log.d("DEBUG", result != null ? result.toString() : null);
+                // Log.d("DEBUG", result != null ? result.toString() : null);
             return result;
         }
 

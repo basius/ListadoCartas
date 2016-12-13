@@ -1,55 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:layout_width="65dp"
+        android:id="@+id/ibPicture"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="8dp"
+        style="@style/Widget.AppCompat.ImageButton" />
+
+    <TextView
+        android:text="TextView"
+        android:id="@+id/tvName"
+        android:layout_marginTop="14dp"
+        android:scaleType="fitXY"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="239dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_alignTop="@+id/ibPicture"
+        android:layout_toRightOf="@+id/ibPicture"
+        android:layout_toEndOf="@+id/ibPicture" />
 
     <TextView
         android:text="TextView"
         android:layout_width="239dp"
         android:layout_height="29dp"
         android:id="@+id/tvType"
-        app:layout_constraintTop_toBottomOf="@+id/tvName"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="64dp"
-        app:layout_constraintLeft_toRightOf="@+id/ibPicture"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginLeft="64dp" />
+        android:layout_alignBottom="@+id/ibPicture"
+        android:layout_alignLeft="@+id/tvName"
+        android:layout_alignStart="@+id/tvName" />
 
-    <TextView
-        android:text="TextView"
-        android:id="@+id/tvName"
-        app:layout_constraintTop_toTopOf="@+id/ibPicture"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="64dp"
-        app:layout_constraintLeft_toRightOf="@+id/ibPicture"
-        android:scaleType="fitXY"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_marginLeft="64dp"
-        android:layout_width="239dp"
-        android:layout_height="29dp" />
-
-    <ImageButton
-        android:layout_width="65dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        android:id="@+id/ibPicture"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:adjustViewBounds="false"
-        style="@style/Widget.AppCompat.ImageButton" />
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
