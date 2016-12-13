@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 /**
@@ -40,10 +42,12 @@ public class MainActivityFragment extends Fragment {
                 R.layout.lv_carta_row,
                 items
         );
+
         lvCartas.setAdapter(adapter);
         lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("DEBUG","7777777777777777777"+":");
                 Card card = (Card) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra("card",card);

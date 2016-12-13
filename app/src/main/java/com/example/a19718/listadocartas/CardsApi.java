@@ -7,6 +7,7 @@ package com.example.a19718.listadocartas;
 import android.graphics.Movie;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,7 +94,10 @@ class CardsApi {
                     card.setColor("NO_COLOR");
                 }
                 card.setType(jsonCard.getString("type"));
-                card.setUrlImage(jsonCard.getString("imageUrl"));
+                //Si no conte link d'imatge, ignorem
+                if(!jsonCard.isNull("imageUrl")) {
+                    card.setUrlImage(jsonCard.getString("imageUrl"));
+                }
 
                 cards.add(card);
             }
