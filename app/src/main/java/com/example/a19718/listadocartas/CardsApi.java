@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class CardsApi {
-    private final String BASE_URL = "https://api.magicthegathering.io/v1/cards";
+    private static String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
-    ArrayList<Card> getCards() {
+    static ArrayList<Card> getCards() {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .build();
@@ -28,7 +28,7 @@ class CardsApi {
         return doCall(url);
     }
 
-    ArrayList<Card> getColors(String color) {
+    static ArrayList<Card> getColors(String color) {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendQueryParameter("colors",color)
@@ -38,7 +38,7 @@ class CardsApi {
         return doCall(url);
     }
 
-    ArrayList<Card> getRarity(String rarity) {
+    static ArrayList<Card> getRarity(String rarity) {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendQueryParameter("rarity",rarity)
@@ -48,7 +48,7 @@ class CardsApi {
         return doCall(url);
     }
 
-    ArrayList<Card> getRarityAndColor(String rarity, String color) {
+    static ArrayList<Card> getRarityAndColor(String rarity, String color) {
         Uri builtUri = Uri.parse(BASE_URL)
                 .buildUpon()
                 .appendQueryParameter("rarity",rarity)
@@ -59,7 +59,7 @@ class CardsApi {
         return doCall(url);
     }
     @Nullable
-    private ArrayList<Card> doCall(String url) {
+    private static ArrayList<Card> doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             return processJson(JsonResponse);
@@ -69,7 +69,7 @@ class CardsApi {
         return null;
     }
 
-    private ArrayList<Card> processJson(String jsonResponse) {
+    private static ArrayList<Card> processJson(String jsonResponse) {
         ArrayList<Card> cards = new ArrayList<>();
         try {
             JSONObject data = new JSONObject(jsonResponse);
