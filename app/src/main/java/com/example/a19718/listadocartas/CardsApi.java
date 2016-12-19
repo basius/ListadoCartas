@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class CardsApi {
-    private static String BASE_URL = "https://api.magicthegathering.io/v1/cards";
+    static String BASE_URL = "https://api.magicthegathering.io/v1/cards";
 
     static ArrayList<Card> getCards() {
         Uri builtUri = Uri.parse(BASE_URL)
@@ -59,7 +59,7 @@ class CardsApi {
         return doCall(url);
     }
     @Nullable
-    private static ArrayList<Card> doCall(String url) {
+    static ArrayList<Card> doCall(String url) {
         try {
             String JsonResponse = HttpUtils.get(url);
             return processJson(JsonResponse);
@@ -69,7 +69,7 @@ class CardsApi {
         return null;
     }
 
-    private static ArrayList<Card> processJson(String jsonResponse) {
+    static ArrayList<Card> processJson(String jsonResponse) {
         ArrayList<Card> cards = new ArrayList<>();
         try {
             JSONObject data = new JSONObject(jsonResponse);

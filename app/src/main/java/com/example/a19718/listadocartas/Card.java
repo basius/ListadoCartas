@@ -2,6 +2,7 @@ package com.example.a19718.listadocartas;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 19718 on 21/10/16.
@@ -15,7 +16,7 @@ public class Card implements Serializable {
     private String type;
     private String color;
     private String urlImage;
-    private ArrayList<String> cards;
+    private List<Card> cards;
 
     public Card() {
     }
@@ -61,11 +62,11 @@ public class Card implements Serializable {
         this.urlImage = urlImage;
     }
 
-    public ArrayList<String> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public void setCards(ArrayList<String> cards) {
+    public void setCards(List<Card> cards) {
         this.cards = cards;
     }
 

@@ -23,8 +23,7 @@ import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 import com.example.a19718.listadocartas.databinding.FragmentMainBinding;
 
 import java.util.ArrayList;
-
-import nl.littlerobots.cupboard.tools.provider.UriHelper;
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -53,11 +52,10 @@ public class MainActivityFragment extends Fragment {
         binding.lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*Log.d("DEBUG","7777777777777777777"+":");
                 Card card = (Card) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra("card",card);
-                startActivity(intent); */
+                startActivity(intent);
             }
         });
 
@@ -102,7 +100,7 @@ public class MainActivityFragment extends Fragment {
             String color = preferences.getString("color", "All");
 
 
-            ArrayList<Card> result = null;
+            List<Card> result = null;
             if(!rarity.equals("All") && !color.equals("All")) {
                 //Basic Land no tenen color. Filtrem perque nomes retorni les que es demana un color especific
                 if ((!(rarity.equals("Basic Land")))) {
@@ -117,11 +115,11 @@ public class MainActivityFragment extends Fragment {
             }else {
                 result = CardsApi.getCards();
             }
-            Log.d("DEBUG", result != null ? result.toString() : null);
+            Log.d("DEBUG","++++++++++"+rarity+":"+color);
+            // Log.d("DEBUG", result != null ? result.toString() : null);
             UriHelper helper = UriHelper.with(CardsContentProvider.AUTHORITY);
             Uri cardUri = helper.getUri(Card.class);
             cupboard().withContext(getContext()).put(cardUri, Card.class, result);
-
 
             return null;
         }
@@ -132,4 +130,6 @@ public class MainActivityFragment extends Fragment {
         super.onStart();
         refresh();
     }
+
+
 }
