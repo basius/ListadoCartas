@@ -120,6 +120,7 @@ public class MainActivityFragment extends Fragment {
             UriHelper helper = UriHelper.with(CardsContentProvider.AUTHORITY);
             Uri cardUri = helper.getUri(Card.class);
             cupboard().withContext(getContext()).put(cardUri, Card.class, result);
+            DataManager.deleteCards(getContext());
             DataManager.saveCards(result, getContext());
             return null;
         }
