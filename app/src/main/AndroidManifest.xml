@@ -30,6 +30,11 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+        <provider
+            android:name=".CardsContentProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false" />
+
     </application>
 
 
