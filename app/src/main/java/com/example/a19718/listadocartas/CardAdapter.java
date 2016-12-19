@@ -2,6 +2,9 @@ package com.example.a19718.listadocartas;
 
 import android.content.Context;
 import com.bumptech.glide.Glide;
+import com.example.a19718.listadocartas.databinding.LvCartaRowBinding;
+
+import android.databinding.DataBindingUtil;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,25 +32,23 @@ public class CardAdapter extends ArrayAdapter<Card>{
         // Obtenim l'objecte en la possició corresponent
         Card card = getItem(position);
         Log.w("XXXX", card.toString());
-
+        LvCartaRowBinding binding = null;
         // Mirem a veure si la View s'està reusant, si no es així "inflem" la View
         // https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView#row-view-recycling
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.lv_carta_row, parent, false);
+            binding = DataBindingUtil.inflate(inflater, R.layout.lv_carta_row, parent, false);
+        }else{
+            binding = DataBindingUtil.getBinding(convertView);
         }
 
-        // Unim el codi en les Views del Layout
-        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-        TextView tvType = (TextView) convertView.findViewById(R.id.tvType);
-        ImageView ibImage = (ImageView) convertView.findViewById(R.id.ibPicture);
-
-        // Fiquem les dades dels objectes (provinents del JSON) en el layout
-        tvName.setText(card.getName());
-        tvType.setText(card.getType());
+        binding.tvName.setText(card.getName());
+        binding.tvType.setText(card.getType());
         //Amb glide caarreguem la imatge al ImageButton corresponent
-        Glide.with(getContext()).load(card.getUrlImage()).into(ibImage);
+        Glide.with(getContext()).load(card.getUrlImage()).into(binding.ibPicture);
         // Retornem la View replena per a mostrarla
-        return convertView;
+        return binding.getRoot();
+
+
     }
 }
