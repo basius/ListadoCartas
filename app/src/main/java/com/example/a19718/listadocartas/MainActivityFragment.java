@@ -3,6 +3,7 @@ package com.example.a19718.listadocartas;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,13 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.util.Log;
-import android.widget.Toast;
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
+import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 import com.example.a19718.listadocartas.databinding.FragmentMainBinding;
 
 import java.util.ArrayList;
+
+import nl.littlerobots.cupboard.tools.provider.UriHelper;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -89,10 +92,10 @@ public class MainActivityFragment extends Fragment {
         task.execute();
     }
 
-    private class RefreshDataTask extends AsyncTask<Void,Void,ArrayList<Card>>{
+    private class RefreshDataTask extends AsyncTask<Void,Void,Void>{
 
         @Override
-        protected ArrayList<Card> doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             String rarity = preferences.getString("rarity", "All");
@@ -114,18 +117,13 @@ public class MainActivityFragment extends Fragment {
             }else {
                 result = CardsApi.getCards();
             }
-            Log.d("DEBUG","++++++++++"+rarity+":"+color);
-                // Log.d("DEBUG", result != null ? result.toString() : null);
-            return result;
-        }
+            Log.d("DEBUG", result != null ? result.toString() : null);
+            UriHelper helper = UriHelper.with(CardsContentProvider.AUTHORITY);
+            Uri cardUri = helper.getUri(Card.class);
+            cupboard().withContext(getContext()).put(cardUri, Card.class, result);
 
 
-        @Override
-        protected void onPostExecute(ArrayList<Card> cards) {
-            adapter.clear();
-            for (Card card : cards) {
-                adapter.add(card);
-            }
+            return null;
         }
     }
 
