@@ -1,40 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <ImageButton
-        android:layout_width="65dp"
-        android:id="@+id/ibPicture"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="8dp"
-        style="@style/Widget.AppCompat.ImageButton" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:text="TextView"
-        android:id="@+id/tvName"
-        android:layout_marginTop="14dp"
-        android:scaleType="fitXY"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_width="239dp"
-        android:layout_height="29dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginStart="22dp"
-        android:layout_alignTop="@+id/ibPicture"
-        android:layout_toRightOf="@+id/ibPicture"
-        android:layout_toEndOf="@+id/ibPicture" />
+        <ImageView
+            android:layout_width="65dp"
+            android:id="@+id/ibPicture"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="8dp"
+            style="@style/Widget.AppCompat.ImageButton" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="239dp"
-        android:layout_height="29dp"
-        android:id="@+id/tvType"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_alignBottom="@+id/ibPicture"
-        android:layout_alignLeft="@+id/tvName"
-        android:layout_alignStart="@+id/tvName" />
+        <TextView
+            android:text="TextView"
+            android:id="@+id/tvName"
+            android:layout_marginTop="14dp"
+            android:scaleType="fitXY"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="239dp"
+            android:layout_height="29dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_alignTop="@+id/ibPicture"
+            android:layout_toRightOf="@+id/ibPicture"
+            android:layout_toEndOf="@+id/ibPicture" />
 
-</RelativeLayout>
+        <TextView
+            android:text="TextView"
+            android:layout_width="239dp"
+            android:layout_height="29dp"
+            android:id="@+id/tvType"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_alignBottom="@+id/ibPicture"
+            android:layout_alignLeft="@+id/tvName"
+            android:layout_alignStart="@+id/tvName" />
+
+    </RelativeLayout>
+    </layout>

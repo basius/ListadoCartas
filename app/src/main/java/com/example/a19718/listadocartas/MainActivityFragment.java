@@ -47,11 +47,11 @@ public class MainActivityFragment extends Fragment {
         lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("DEBUG","7777777777777777777"+":");
+                /*Log.d("DEBUG","7777777777777777777"+":");
                 Card card = (Card) adapterView.getItemAtPosition(i);
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra("card",card);
-                startActivity(intent);
+                startActivity(intent); */
             }
         });
 
