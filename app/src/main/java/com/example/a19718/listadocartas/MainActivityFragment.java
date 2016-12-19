@@ -2,6 +2,7 @@ package com.example.a19718.listadocartas;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -18,6 +19,8 @@ import android.widget.ListView;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.a19718.listadocartas.databinding.FragmentMainBinding;
+
 import java.util.ArrayList;
 
 /**
@@ -33,9 +36,9 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-
-        ListView lvCartas = (ListView) view.findViewById(R.id.lvCartas);
+        FragmentMainBinding binding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_main, container, false);
+        View view = binding.getRoot();
         items = new ArrayList<>();
         adapter = new CardAdapter(
                 getContext(),
@@ -43,8 +46,8 @@ public class MainActivityFragment extends Fragment {
                 items
         );
 
-        lvCartas.setAdapter(adapter);
-        lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.lvCartas.setAdapter(adapter);
+        binding.lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 /*Log.d("DEBUG","7777777777777777777"+":");
