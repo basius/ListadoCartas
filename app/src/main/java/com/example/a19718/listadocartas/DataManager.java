@@ -2,7 +2,7 @@ package com.example.a19718.listadocartas;
 
 import android.content.Context;
 import android.net.Uri;
-import java.util.ArrayList;
+import android.support.v4.content.CursorLoader;
 import java.util.List;
 
 import nl.littlerobots.cupboard.tools.provider.UriHelper;
@@ -21,6 +21,9 @@ public class DataManager {
     }
 
     static void deleteCards(Context context) {
-        cupboard().withContext(context).delete(CARD_URI, "_id > ?", "1");
+        cupboard().withContext(context).delete(CARD_URI, "_id > ?", "0");
+    }
+    static CursorLoader getCursorLoader(Context context) {
+                return new CursorLoader(context, CARD_URI, null, null, null, null);
     }
 }

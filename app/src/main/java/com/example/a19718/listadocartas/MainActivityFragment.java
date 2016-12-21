@@ -1,5 +1,6 @@
 package com.example.a19718.listadocartas;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,19 +21,18 @@ import android.widget.AdapterView;
 import android.util.Log;
 import nl.littlerobots.cupboard.tools.provider.UriHelper;
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
-
+import android.database.Cursor;
 import com.example.a19718.listadocartas.databinding.FragmentMainBinding;
-
-import java.util.ArrayList;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
-    private ArrayList<Card> items;
-    private CardAdapter adapter;
-
+public class MainActivityFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+    private CardCursorAdapter adapter;
+    private ProgressDialog dialog;
     public MainActivityFragment() {
     }
 
@@ -41,13 +42,9 @@ public class MainActivityFragment extends Fragment {
         FragmentMainBinding binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_main, container, false);
         View view = binding.getRoot();
-        items = new ArrayList<>();
-        adapter = new CardAdapter(
-                getContext(),
-                R.layout.lv_carta_row,
-                items
-        );
-
+        adapter = new CardCursorAdapter(getContext(), Card.class);
+        dialog = new ProgressDialog(getContext());
+        dialog.setMessage("Loading,wait plz...");
         binding.lvCartas.setAdapter(adapter);
         binding.lvCartas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -58,7 +55,7 @@ public class MainActivityFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        getLoaderManager().initLoader(0, null, this);
         return view;
     }
 
@@ -89,9 +86,26 @@ public class MainActivityFragment extends Fragment {
         RefreshDataTask task = new RefreshDataTask();
         task.execute();
     }
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return DataManager.getCursorLoader(getContext());
+    }
 
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        adapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        adapter.swapCursor(null);
+    }
     private class RefreshDataTask extends AsyncTask<Void,Void,Void>{
-
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog.show();
+        }
         @Override
         protected Void doInBackground(Void... params) {
             //Common, Uncommon, Rare, Mythic Rare, Special, Basic Land] y el color de la carta.
@@ -124,11 +138,17 @@ public class MainActivityFragment extends Fragment {
             DataManager.saveCards(result, getContext());
             return null;
         }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            dialog.dismiss();
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        //concervem el refresh per tal de que quan toquem les settings s'actualitzi automaticament
         refresh();
     }
 
